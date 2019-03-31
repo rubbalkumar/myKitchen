@@ -1,0 +1,23 @@
+{
+  "name": "mykitchen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arfan-rfn/myKitchen.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arfan-rfn/myKitchen/issues"
+  },
+  "homepage": "https://github.com/arfan-rfn/myKitchen#readme",
+  "dependencies": {
+    "express": "4.16.4",
+    "mysql": "2.16.0"
+  }
+}
