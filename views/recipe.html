@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./recipe.css">
   <script src="./recipe.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> -->
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script> -->
 
@@ -18,26 +19,36 @@
 
   <div id="mySidenav2" class="sidenav2">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
-    <input type="text" id="shoppingLst">
-    <a href="#">right bar</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
+    <h1 class="heading">Shopping List</h1>
+    <div class="search-container">
+        <form action="/action_page.php">
+          <input type="text" placeholder="Things to buy" name="search">
+          <button type="submit">Add </button>
+        </form>
+      </div>
+      <div class="heading" id="resultlist">Results Div</div>
+  </div>
+
   </div>
 
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="#">leftbar</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
+    <h1 class="heading">Pantry List</h1>
+    <div class="search-container">
+        <form action="/action_page.php">
+          <input type="text" placeholder="Pantry Items" name="search">
+          <button type="submit">Add </button>
+        </form>
+      </div>
+    <div class="heading" id="pantrylist">Results Div</div>
   </div>
 
 
   <div id="main">
     <span id="pantryLst" onclick="openNav()">&#9776; Pantry List</span>
-    <span id="shoppingLst" onclick="openNav2()">&#9776; Shopping List</span>
+    <span id="shoppingLstNavBar" onclick="openNav2()">&#9776; Shopping List</span>
     <div id="content" style="clear: both;margin: auto">
+      
       <div id="text">
         <h1>Foodee</h1>
         <img src="https://i.stack.imgur.com/22WR2.png" alt="Avatar" height="150" width="150">
@@ -47,11 +58,42 @@
             Login with Google
           </a>
         </div>
+        <div class="search-container">
+            <form action="">
+              <input id="searchIgd" type="text" placeholder="Search Ingredients" name="search">
+              <button id="submit" type="submit"><i class="fa fa-search"></i></button>
+              <style>#searchIgd{
+                  height:50px;
+                  font-size:14pt;
+                  text-align: center;
+
+              }
+              #submit{
+                height:50px;
+                  font-size:14pt;
+                  text-align: center;
+
+              }</style>
+              <div id="allRecipes">Results Div</div>
+              
+            </form>
+          </div>
+        
+       
       </div>
 
 
-      <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
+    
+      
     </div>
+  </div>
+
+  <div class="footer">
+
+      <a href="#" class="contribute">Create New Recipe</a>
+      <a href="#" class="contribute">Your Created Recipe</a>
+      <a href="#" class="contribute">Your Saved Recipes</a>
+    
   </div>
 
 </body>
