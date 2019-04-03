@@ -32,7 +32,7 @@ img {
   float: left;
 }
 
-#shoppingLst{
+#shoppingLstNavBar{
   font-size:30px;
   cursor:pointer;
   float: right;
@@ -70,11 +70,6 @@ img {
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
-}
-
-#shoppingLst{
-  width:"20%";
-  : "center";
 }
 
 

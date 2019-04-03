@@ -9,7 +9,7 @@ var connection = mysql.createConnection({
     database: 'mykitchen',
     timeout: 60000
 });
-
+app.use('/views', express.static('views'));
 connection.connect(function (err) {
     if (err) {
         console.error('error connecting: ' + err.stack);

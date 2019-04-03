@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 app.set('view engine', 'ejs');
+app.use('/views', express.static('views'));
 
 var connection = mysql.createConnection({
     host: 'mykitchen.c3jx8fklyfbq.us-east-2.rds.amazonaws.com',
