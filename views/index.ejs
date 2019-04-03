@@ -22,19 +22,27 @@
 
     <div id="mySidenav2" class="sidenav2">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
-        <input type="text" id="shoppingLst">
-        <a href="#">right bar</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <% if(user) { %>
+            <a href="#"><%= user%></a>
+            <a href="#">right bar</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        <% } else{%>
+            <a href="#">login</a>
+        <% } %>
     </div>
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <% if(user) { %>
-        <h2><%= user%></h2>
+            <a href="#"><%= user%></a>
+            <a href="#">right bar</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
         <% } else{%>
-        <a href="#">login</a>
+            <a href="#">login</a>
         <% } %>
 
     </div>
@@ -48,16 +56,16 @@
                 <h1>Foodee</h1>
                 <% if(user) { %>
                 <img src="https://i.stack.imgur.com/22WR2.png" alt="Avatar" height="150" width="150">
-                <div id="Login"><%= user%></div>
+                <div id="Login" class="username"><%= user%></div>
 
                 <% } else{%>
                 <a href="/auth/google">
                     <img src="https://i.stack.imgur.com/22WR2.png" alt="Avatar" height="150" width="150">
-                    <div id="Login">Login with Google</div>
+                    <div id="Login" class="username">Login with Google</div>
                 </a>
                 <% } %>
 
-            </div>Î
+            </div>
 
 
             <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>

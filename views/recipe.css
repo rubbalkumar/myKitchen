@@ -25,6 +25,10 @@ img {
 #text{
   text-align: center;
 }
+.username{
+  font-size: 30px;
+  
+}
 
 #pantryLst{
   font-size:30px;
