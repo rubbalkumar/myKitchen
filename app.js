@@ -3,8 +3,12 @@ const mysql = require('mysql');
 const passport = require('passport');
 const config = require('./config');
 const cookieSession = require('cookie-session');
+const bodyParser = require('body-parser');
 
 const app = express();
+
+app.set('view engine', 'ejs');
+
 var connection = mysql.createConnection({
     host: 'mykitchen.c3jx8fklyfbq.us-east-2.rds.amazonaws.com',
     user: 'mykitchen',
@@ -12,6 +16,11 @@ var connection = mysql.createConnection({
     database: 'mykitchen',
     timeout: 60000
 });
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 
 app.use(cookieSession({
     maxAge: 5 * 24 * 60 * 60 * 1000, // 5 day for cookie
@@ -74,6 +83,20 @@ connection.connect(function (err) {
 });
 
 app.get('/', (req, res) => {
+    if (req.user) {
+        res.render('index', {
+            user: req.user,
+            recipe: ['sfs', 'sdfa']
+        });
+    } else {
+        res.render('index', {
+            user: null, 
+            recipe: ['sfs', 'sdfa']
+        });
+    }
+});
+
+app.get('/auth', (req, res) => {
     if (req.user) {
         res.send('auth user');
     } else {
