@@ -11,7 +11,6 @@
 
 </head>
 <!-- 
-<h1>hello world</h1>
 <% if(user) { %>
 <h2><%= user %></h2>
 <% } else{%>
@@ -32,10 +31,12 @@
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">leftbar</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <% if(user) { %>
+        <h2><%= user%></h2>
+        <% } else{%>
+        <a href="#">login</a>
+        <% } %>
+
     </div>
 
 
@@ -45,14 +46,18 @@
         <div id="content" style="clear: both;margin: auto">
             <div id="text">
                 <h1>Foodee</h1>
+                <% if(user) { %>
                 <img src="https://i.stack.imgur.com/22WR2.png" alt="Avatar" height="150" width="150">
+                <div id="Login"><%= user%></div>
 
-                <div id="Login">
+                <% } else{%>
+                <a href="/auth/google">
+                    <img src="https://i.stack.imgur.com/22WR2.png" alt="Avatar" height="150" width="150">
+                    <div id="Login">Login with Google</div>
+                </a>
+                <% } %>
 
-                    Login with Google
-                    </a>
-                </div>
-            </div>
+            </div>Î
 
 
             <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
