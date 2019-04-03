@@ -1,45 +1,111 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
+
 <head>
-    <title>Foodee</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="recommend.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="main.js"></script>
+  <title>Foodee</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="recommend.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="./recommend.js"></script>
 </head>
+
 <body>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-              <div class="card card-signin my-5">
-                <div class="card-body">
-                  <h5 class="card-title text-center">Contribute Your Recipe </h5>
-                  <form class="form-signin">
-                    <div class="form-label-group">
-                        <input type="text" id="title" class="form-control" placeholder="Title" required autofocus>
-                        <label for="title">Title of the Recipe</label>
-                    </div>
 
-                    <div class="form-label-group">
-                        <input type="text" id="ingredients" class="form-control" placeholder="Ingredients" required autofocus>
-                        <label for="ingredients">Ingredients (Use commas)</label>
-                    </div>
+  <div id="mySidenav2" class="sidenav2">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
+    <h1 class="heading">Shopping List</h1>
+    <div class="search-container">
+      <form action="/action_page.php">
+        <input type="text" placeholder="Things to buy" name="search">
+        <button type="submit">Add </button>
+      </form>
+    </div>
+    <div class="heading" id="resultlist">Results Div</div>
+  </div>
 
-                    <div class="form-label-group">
-                        <input type="text" id="instructions" class="form-control" placeholder="Instruction" required autofocus>
-                        <label for="instructions">Instructions</label>
-                    </div>
+  </div>
 
-                    <div class="form-label-group">
-                        <input type="number" id="time" class="form-control" placeholder="Time" required autofocus>
-                        <label for="title">Time (Minute)</label>
-                    </div>
-                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Submit</button>
-                    <hr class="my-4">
-                    </form>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <h1 class="heading">Pantry List</h1>
+    <div class="search-container">
+      <form action="/action_page.php">
+        <input type="text" placeholder="Pantry Items" name="search">
+        <button type="submit">Add </button>
+      </form>
+    </div>
+    <div class="heading" id="pantrylist">Results Div</div>
+  </div>
+
+
+  <div id="main">
+    <span id="pantryLst" onclick="openNav()">&#9776; Pantry List</span>
+    <span id="shoppingLstNavBar" onclick="openNav2()">&#9776; Shopping List</span>
+    <div id="content" style="clear: both;margin: auto">
+
+      <div id="text">
+        <h1>Foodee</h1>
+        <img src="https://i.stack.imgur.com/22WR2.png" alt="Avatar" height="150" width="150">
+
+        <div id="Login">
+
+          Login with Google
+
+
+        </div>
+
+
+
+
+      </div>
+    </div>
+
+
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card card-signin my-5">
+            <div class="card-body">
+              <h5 class="card-title text-center">Contribute Your Recipe </h5>
+              <form class="form-signin">
+                <div class="form-label-group">
+                  <input type="text" id="title" class="form-control" placeholder="Title" required autofocus>
+                  <label for="title">Title of the Recipe</label>
                 </div>
-              </div>
+
+                <div class="form-label-group">
+                  <input type="text" id="ingredients" class="form-control" placeholder="Ingredients" required autofocus>
+                  <label for="ingredients">Ingredients (Use commas)</label>
+                </div>
+
+                <div class="form-label-group">
+                  <input type="text" id="instructions" class="form-control" placeholder="Instruction" required
+                    autofocus>
+                  <label for="instructions">Instructions</label>
+                </div>
+
+                <div class="form-label-group">
+                  <input type="number" id="time" class="form-control" placeholder="Time" required autofocus>
+                  <label for="title">Time (Minute)</label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Submit</button>
+                <hr class="my-4">
+              </form>
             </div>
           </div>
         </div>
-      </body>
+      </div>
+    </div>
+
+    <div class="footer">
+
+      <a href="#" class="contribute">Create New Recipe</a>
+      <a href="#" class="contribute">Your Created Recipe</a>
+      <a href="#" class="contribute">Your Saved Recipes</a>
+
+    </div>
+</body>
+
 </html>
