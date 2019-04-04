@@ -102,7 +102,7 @@ app.get('/', (req, res) => {
     }
 });
 
-app.get('/recipe', (req, res) => {
+app.get('/recipe/', (req, res) => {
     if (req.user) {
         res.render('recipe_details', {
             user: req.user,
@@ -118,13 +118,9 @@ app.get('/recipe', (req, res) => {
 
 app.get('/search', (req, res) => {
     var ing = req.query.search.split(',');
-    // TODO: query the db based on the list
-
-    // SELECT * FROM Customers WHERE Country IN ('Germany', 'France', 'UK');
-    // SELECT * FROM table WHERE column LIKE 'Text%' OR column LIKE 'Hello%' OR column LIKE 'That%'
     var sql = "SELECT * FROM recipes WHERE ingredients LIKE ";
     var i;
-    for (i = 0; i < ing.length-1; i++) {
+    for (i = 0; i < ing.length - 1; i++) {
         sql += "'%" + ing[i].trim() + "%' OR ingredients LIKE ";
     }
     sql += "'%" + ing[i].trim() + "%';";
