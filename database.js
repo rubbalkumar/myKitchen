@@ -44,36 +44,32 @@ connection.connect(function (err) {
 
 app.get('/', (req, res) => {
     //Store into recipe
-//     var sql = "INSERT INTO recipes (title, instructions, owner, picture, time) VALUES ('Tomato Sauce With Onion & Butter', 'Put either the prepared fresh tomatoes or the canned in a saucepan, add the butter, onion, and salt, and cook uncovered at a very slow, but steady simmer for about 45 minutes, or until it is thickened to your liking and the fat floats free from the tomato. Stir from time to time, mashing up any large pieces of tomato with the back of a wooden spoon. Taste and correct for salt. Before tossing with pasta, you may remove the onion (as Hazan recommended) and save for another use, but many opt to leave it in. Serve with freshly grated parmigiano-reggiano cheese for the table.', 'Marcella Hazan', 'https://www.creative-culinary.com/wp-content/uploads/tomato-butter-onion.jpg', '60 mins');";
+//     var sql = "INSERT INTO recipes (title, instructions, owner, picture, time) VALUES ('Lemonade', 'Take a glass of cold water and squeeze some lemon juice into it. Add sugar and a pinch of salt. Mix until everything is dissolved. Enjoy!', 'Sukriti Sinha', 'https://thebusybaker.ca/wp-content/uploads/2018/04/healthy-3-ingredient-lemonade-3.jpg', '5 mins');";
 //     connection.query(sql, function (err, result) {
 //     if (err) throw err;
 //   });
 
     //Store into ingredients
-//   var sql = "INSERT INTO requirements (id, title, ingredients) VALUES (3,'Tomato Sauce With Onion & Butter','tomatoes'), (3,'Tomato Sauce With Onion & Butter','butter'), (3,'Tomato Sauce With Onion & Butter','onion'),(3,'Tomato Sauce With Onion & Butter','salt');";
+//   var sql = "INSERT INTO requirements (id, title, ingredients) VALUES (4,'Lemonade','lemon'), (4,'Lemonade','water'), (4,'Lemonade','salt'),(4,'Lemonade','sugar');";
 //     connection.query(sql, function (err, result) {
 //     if (err) throw err;
 //   });
 
-//     var sql = "select * from recipes";
-//     connection.query(sql, function (err, result2) {
-//     if (err) throw err;
-//     res.send(result2);
-// });
 
-    // var sql = "select * from requirements";
+
+    // var sql = "INSERT INTO recipes (ingredients) VALUES   ('lemon, water, sugar, salt')";
     //     connection.query(sql, function (err, result2) {
     //     if (err) throw err;
     //     res.send(result2);
     // });
 
-    var sql = "select * from users";
-    connection.query(sql, function (err, result2) {
-    if (err) throw err;
-    res.send(result2);
-});
+//     var sql = "select * from users";
+//     connection.query(sql, function (err, result2) {
+//     if (err) throw err;
+//     res.send(result2);
+// });
 
-// var sql = "ALTER TABLE ingredients RENAME TO requirements;";
+// var sql = "UPDATE recipes SET ingredients = ('lemon, water, sugar, salt') WHERE id = 4";
 //     connection.query(sql, function (err, result2) {
 //     if (err) throw err;
 //     //res.send(result2);
@@ -84,6 +80,12 @@ app.get('/', (req, res) => {
 //     if (err) throw err;
 //     res.send(result2);
 // });
+
+    var sql = "select * from recipes";
+    connection.query(sql, function (err, result2) {
+    if (err) throw err;
+    res.send(result2);
+});
 
 
 });
