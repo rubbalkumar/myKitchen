@@ -24,11 +24,19 @@
     <div id="mySidenav2" class="sidenav2">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
         <% if(user) { %>
-        <a href="#"><%= user%></a>
-        <a href="#">right bar</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <a href="#" style="text-decoration: underline;">Your Shopping List</a>
+
+        <div class="search_area">
+            <form action="/pantry/add">
+                <input id="addIgd" type="text" placeholder="add items" name="ingredient">
+            </form>
+        </div>
+
+        <div class="indItem">ing items 1<a href="#"> X </a></div>
+        <div class="indItem">ing items 2<a href="#"> X </a></div>
+        <div class="indItem">ing items 3<a href="#"> X </a></div>
+        <div class="indItem">ing items 4<a href="#"> X </a></div>
+        <div class="indItem">ing items 5<a href="#"> X </a></div>
         <% } else{%>
         <a href="#">login</a>
         <% } %>
@@ -45,11 +53,11 @@
             </form>
         </div>
 
-        <a href="#"><%= user%></a>
-        <a href="#">right bar</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <div class="indItem">ing items 1<a href="#"> X </a></div>
+        <div class="indItem">ing items 2<a href="#"> X </a></div>
+        <div class="indItem">ing items 3<a href="#"> X </a></div>
+        <div class="indItem">ing items 4<a href="#"> X </a></div>
+        <div class="indItem">ing items 5<a href="#"> X </a></div>
         <% } else{%>
         <a href="#">login</a>
         <% } %>
@@ -80,7 +88,7 @@
                 <% } %>
             </div>
 
-            <div class="search_area">
+            <div>
                 <form action="/search">
                     <input id="searchIgd" type="text" placeholder="Search Ingredients" name="search">
                 </form>
@@ -94,7 +102,7 @@
                     </div>
 
                     <div class="recipe_ing">
-                        aksldf, asdf, asdf, asdf, asdf
+                            <%= recipe[0].ingredients%>
                     </div>
                 </div>
             </a>

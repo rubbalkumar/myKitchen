@@ -146,13 +146,14 @@ app.get('/search', (req, res) => {
         sql += "'%" + ing[i].trim() + "%' OR ingredients LIKE ";
     }
     sql += "'%" + ing[i].trim() + "%';";
-    console.log(sql);
     connection.query(sql, function (err, result) {
         if (err) throw err;
-        console.log(result);
-    });
 
-    res.send(ing);
+        res.render('index', {
+            user: req.user,
+            recipe: result
+        });
+    });
 });
 
 app.get('/auth', (req, res) => {
