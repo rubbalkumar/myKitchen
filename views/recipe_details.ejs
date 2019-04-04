@@ -6,16 +6,14 @@
     <link rel="stylesheet" href="views/recipe.css">
     <script src="views/recipe.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script> -->
 
 
 </head>
 <!-- 
 <% if(user) { %>
-<h2><%= user %></h2>
+    <h2><%= user %></h2>
 <% } else{%>
-<h2>not auth</h2>
+    <h2>not auth</h2>
 <% } %> 
 -->
 
@@ -24,44 +22,48 @@
     <div id="mySidenav2" class="sidenav2">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
         <% if(user) { %>
-        <a href="#"><%= user%></a>
-        <a href="#">right bar</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+            <a href="#"><%= user%></a>
+            <a href="#">right bar</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
         <% } else{%>
-        <a href="#">login</a>
+            <a href="/auth/google">login</a>
         <% } %>
     </div>
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <% if(user) { %>
-        <a href="#"><%= user%></a>
-        <a href="#">right bar</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+            <a href="#"><%= user%></a>
+            <a href="#">right bar</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
         <% } else{%>
-        <a href="#">login</a>
+            <a href="/auth/google">login</a>
         <% } %>
 
     </div>
- 
+
 
     <div id="main">
         <span id="pantryLst" onclick="openNav()">&#9776; Pantry List</span>
         <span id="shoppingLstNavBar" onclick="openNav2()">&#9776; Shopping List</span>
         <div id="content" style="clear: both;margin: auto">
             <div id="text">
-                <a href="/"><div id="logo">|Foodee|</div></a>
+                <a href="/">
+                    <div id="logo">|Foodee|</div>
+                </a>
                 <% if(user) { %>
                 <img id="user_picture" src=<%= user.picture%> alt="Avatar" height="150" width="150">
                 <div id="Login" class="username"><%= user.username%></div>
 
                 <% } else{%>
                 <a href="/auth/google">
-                    <img id="user_picture" src="https://www.edigitalagency.com.au/wp-content/uploads/google-logo-icon-PNG-Transparent-Background-letter-G-multiple-colors.png" width="100">
+                    <img id="user_picture"
+                        src="https://www.edigitalagency.com.au/wp-content/uploads/google-logo-icon-PNG-Transparent-Background-letter-G-multiple-colors.png"
+                        width="100">
                     <br>
                     <img src="/views/google.png" width="200">
                 </a>
@@ -69,12 +71,12 @@
             </div>
 
 
-        <div class="footer">
-            <a href="views/recommend.html" class="contribute">Create New Recipe</a>
-            <a href="/" class="contribute">Your Created Recipe</a>
-            <a href="/" class="contribute">Your Saved Recipes</a>
+            <div class="footer">
+                <a href="views/recommend.html" class="contribute">Create New Recipe</a>
+                <a href="/" class="contribute">Your Created Recipe</a>
+                <a href="/" class="contribute">Your Saved Recipes</a>
+            </div>
         </div>
-    </div>
 
 </body>
 
