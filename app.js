@@ -90,16 +90,11 @@ connection.connect(function (err) {
 });
 
 app.get('/', (req, res) => {
-    if (req.user) {
-        res.render('index', {
-            user: req.user,
-            recipe: []
-        });
+    if (req.user && req.user.pantry) {
+        var pantry = req.user.pantry.substring(0, req.user.pantry.length - 2);
+        res.redirect('/search?search=' + pantry);
     } else {
-        res.render('index', {
-            user: null,
-            recipe: []
-        });
+        res.redirect('/search');
     }
 });
 
@@ -153,7 +148,7 @@ app.get('/pantry/remove/:ingredient', (req, res) => {
     }
 });
 
-app.get('/shopping/add', (req, res) => { 
+app.get('/shopping/add', (req, res) => {
     var item = req.query.ingredient;
     if (req.user) {
         var userID = req.user.id;
@@ -207,7 +202,7 @@ app.get('/shopping/remove/:ingredient', (req, res) => {
 
 
 app.get('/recipe/:id', (req, res) => {
-    var id = req.params.id;  // recipe id
+    var id = req.params.id; // recipe id
     // TODO: query recipe table based on the id
 
     if (req.user) {
@@ -224,13 +219,19 @@ app.get('/recipe/:id', (req, res) => {
 });
 
 app.get('/search', (req, res) => {
-    var ing = req.query.search.split(',');
-    var sql = "SELECT * FROM recipes WHERE ingredients LIKE ";
-    var i;
-    for (i = 0; i < ing.length - 1; i++) {
-        sql += "'%" + ing[i].trim() + "%' OR ingredients LIKE ";
+    var sql;
+    if (req.query.search) {
+        var ing = req.query.search.split(',');
+        sql = "SELECT * FROM recipes WHERE ingredients LIKE ";
+        var i;
+        for (i = 0; i < ing.length - 1; i++) {
+            sql += "'%" + ing[i].trim() + "%' OR ingredients LIKE ";
+        }
+        sql += "'%" + ing[i].trim() + "%';";
+        console.log(sql);
+    } else {
+        sql = "SELECT * FROM recipes";
     }
-    sql += "'%" + ing[i].trim() + "%';";
     connection.query(sql, function (err, result) {
         if (err) throw err;
 
