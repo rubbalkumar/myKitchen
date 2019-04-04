@@ -138,7 +138,8 @@ app.get('/pantry/remove/:ingredient', (req, res) => {
             if (err) throw err;
             var updatedPantry = result[0].pantry;
             if (updatedPantry.includes(item)) {
-                updatedPantry.replace(item + ', ', ''); // TODO: this replace is not working, can you fix it?
+                var temp = item+', ';
+                updatedPantry = updatedPantry.replace(temp, '');
             }
             var sql2 = "UPDATE users SET pantry = '" + updatedPantry + "' WHERE id = " + userID + ";";
             connection.query(sql2, function (err, result2) {
