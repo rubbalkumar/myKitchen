@@ -92,12 +92,12 @@ app.get('/', (req, res) => {
     if (req.user) {
         res.render('index', {
             user: req.user,
-            recipe: ['sfs', 'sdfa']
+            recipe: []
         });
     } else {
         res.render('index', {
             user: null,
-            recipe: ['sfs', 'sdfa']
+            recipe: []
         });
     }
 });
@@ -138,7 +138,7 @@ app.get('/pantry/remove/:ingredient', (req, res) => {
             if (err) throw err;
             var updatedPantry = result[0].pantry;
             if (updatedPantry.includes(item)) {
-                var temp = item+', ';
+                var temp = item + ', ';
                 updatedPantry = updatedPantry.replace(temp, '');
             }
             var sql2 = "UPDATE users SET pantry = '" + updatedPantry + "' WHERE id = " + userID + ";";

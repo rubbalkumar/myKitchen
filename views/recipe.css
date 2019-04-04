@@ -70,6 +70,15 @@ body {
   margin-bottom: 5px;
 }
 
+.recipe_ing{
+  font-style: italic;
+  padding: 2px;
+}
+
+.recipe_instruction{
+  margin: 10px;
+}
+
 #submitSearch {
   height: 50px;
   font-size: 14pt;
