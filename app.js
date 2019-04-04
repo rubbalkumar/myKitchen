@@ -51,10 +51,10 @@ passport.deserializeUser((id, cb) => {
 
 
 passport.use(new GoogleStrategy({
-        clientID: config.google_client_id,
-        clientSecret: config.google_client_secret,
-        callbackURL: " /auth/google/redirect"
-    },
+    clientID: config.google_client_id,
+    clientSecret: config.google_client_secret,
+    callbackURL: " /auth/google/redirect"
+},
     function (accessToken, refreshToken, profile, cb) {
         var sql = "SELECT * FROM users WHERE googleid = '" + profile._json.sub + "';";
         connection.query(sql, function (err, result2) {
@@ -114,11 +114,23 @@ app.get('/recipe', (req, res) => {
             recipe: ['sfs', 'sdfa']
         });
     }
-});
+}); 
 
 app.get('/search', (req, res) => {
     var ing = req.query.search.split(',');
     // TODO: query the db based on the list
+
+    var sql = "SELECT * FROM recipes WHERE ingredients LIKE '";
+    for (var i = 0; i < ing.length; i++) {
+        sql += "%" + ing[i].trim();
+    }
+        sql += "%';";
+        console.log(sql);
+        connection.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log(result);
+        });
+
     res.send(ing);
 });
 
