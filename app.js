@@ -51,10 +51,10 @@ passport.deserializeUser((id, cb) => {
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.use(new GoogleStrategy({
-        clientID: config.google_client_id,
-        clientSecret: config.google_client_secret,
-        callbackURL: " /auth/google/redirect"
-    },
+    clientID: config.google_client_id,
+    clientSecret: config.google_client_secret,
+    callbackURL: " /auth/google/redirect"
+},
     function (accessToken, refreshToken, profile, cb) {
         var sql = "SELECT * FROM users WHERE googleid = '" + profile._json.sub + "';";
         connection.query(sql, function (err, result2) {
@@ -105,6 +105,16 @@ app.get('/', (req, res) => {
 app.get('/search', (req, res) => {
     var ing = req.query.search.split(',');
     // TODO: query the db based on the list
+
+    for (var i = 0; i < ing.length; i++) {
+        var sql = "SELECT * FROM recipes WHERE ingredients LIKE '%"+ing[i]+"%';"; 
+        connection.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log(result);
+        });
+    }
+
+    res.send(ing);
 });
 
 app.get('/auth', (req, res) => {
