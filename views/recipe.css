@@ -39,6 +39,16 @@ body {
   border-radius: 20px;
   background-color: rgba(221, 214, 190, 0.863);
 }
+
+#addIgd {
+  height: 30px;
+  width: 100%;
+  font-size: 14pt;
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgba(190, 221, 197, 0.438);
+}
+
 .recipe_a{
   color: rgb(58, 53, 53);
   text-decoration: none; /* no underline */

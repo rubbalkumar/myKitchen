@@ -37,6 +37,14 @@
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <% if(user) { %>
+        <a href="#" style="text-decoration: underline;">Your Pantry Items</a>
+
+        <div class="search_area">
+            <form action="/pantry/add">
+                <input id="addIgd" type="text" placeholder="add items" name="ingredient">
+            </form>
+        </div>
+
         <a href="#"><%= user%></a>
         <a href="#">right bar</a>
         <a href="#">Services</a>
@@ -47,21 +55,25 @@
         <% } %>
 
     </div>
- 
+
 
     <div id="main">
         <span id="pantryLst" onclick="openNav()">&#9776; Pantry List</span>
         <span id="shoppingLstNavBar" onclick="openNav2()">&#9776; Shopping List</span>
         <div id="content" style="clear: both;margin: auto">
             <div id="text">
-                <a href="/"><div id="logo">|Foodee|</div></a>
+                <a href="/">
+                    <div id="logo">|Foodee|</div>
+                </a>
                 <% if(user) { %>
                 <img id="user_picture" src=<%= user.picture%> alt="Avatar" height="150" width="150">
                 <div id="Login" class="username"><%= user.username%></div>
 
                 <% } else{%>
                 <a href="/auth/google">
-                    <img id="user_picture" src="https://www.edigitalagency.com.au/wp-content/uploads/google-logo-icon-PNG-Transparent-Background-letter-G-multiple-colors.png" width="100">
+                    <img id="user_picture"
+                        src="https://www.edigitalagency.com.au/wp-content/uploads/google-logo-icon-PNG-Transparent-Background-letter-G-multiple-colors.png"
+                        width="100">
                     <br>
                     <img src="/views/google.png" width="200">
                 </a>

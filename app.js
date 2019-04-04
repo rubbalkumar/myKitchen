@@ -102,9 +102,9 @@ app.get('/', (req, res) => {
     }
 });
 
-app.get('/pantry/add/:ingredient', (req, res) => {
-    console.log(req.params.ingredient);
-    var item = req.params.ingredient;
+app.get('/pantry/add', (req, res) => {
+    console.log(req.query.ingredient);
+    var item = req.query.ingredient;
     if (req.user) {
         var userID = req.user.id;
         // TODO: based on the userID add a new ingredient in the user pantry list
@@ -113,12 +113,11 @@ app.get('/pantry/add/:ingredient', (req, res) => {
     }
 });
 
-app.get('/pantry/remove/:ingredient', (req, res) => {
-    console.log(req.params.ingredient);
-    var item = req.params.ingredient;
+app.get('/pantry/remove', (req, res) => {
+    var item = req.query.ingredient;
     if (req.user) {
         var userID = req.user.id;
-        // TODO: based on the userID remove the ingredient in the user pantry list
+        // TODO: based on the userID add a new ingredient in the user pantry list
     } else {
         res.send('unauthorized');
     }
