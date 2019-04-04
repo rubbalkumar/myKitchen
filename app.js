@@ -4,6 +4,7 @@ const passport = require('passport');
 const config = require('./config');
 const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 const app = express();
 
@@ -48,7 +49,6 @@ passport.deserializeUser((id, cb) => {
     });
 });
 
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.use(new GoogleStrategy({
         clientID: config.google_client_id,
@@ -102,9 +102,24 @@ app.get('/', (req, res) => {
     }
 });
 
+app.get('/recipe', (req, res) => {
+    if (req.user) {
+        res.render('recipe_details', {
+            user: req.user,
+            recipe: ['sfs', 'sdfa']
+        });
+    } else {
+        res.render('recipe_details', {
+            user: null,
+            recipe: ['sfs', 'sdfa']
+        });
+    }
+});
+
 app.get('/search', (req, res) => {
     var ing = req.query.search.split(',');
     // TODO: query the db based on the list
+    res.send(ing);
 });
 
 app.get('/auth', (req, res) => {
