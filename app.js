@@ -106,13 +106,16 @@ app.get('/search', (req, res) => {
     var ing = req.query.search.split(',');
     // TODO: query the db based on the list
 
-    for (var i = 0; i < ing.length; i++) {
-        var sql = "SELECT * FROM recipes WHERE ingredients LIKE '%"+ing[i]+"%';"; 
+    var sql = "SELECT * FROM recipes WHERE ingredients LIKE";
+    for (var i = 0; i < ing.length-1; i++) {
+        sql += " '%" + ing[i].trim() + "%' OR ";
+    }
+        sql += " '%" + ing[i].trim()+ "%';";
+        console.log(sql);
         connection.query(sql, function (err, result) {
             if (err) throw err;
             console.log(result);
         });
-    }
 
     res.send(ing);
 });

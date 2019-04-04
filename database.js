@@ -69,11 +69,11 @@ app.get('/', (req, res) => {
 //     res.send(result2);
 // });
 
-var sql = "UPDATE recipes SET ingredients = ('lemon, water, sugar, salt') WHERE id = 4";
-    connection.query(sql, function (err, result2) {
-    if (err) throw err;
-    //res.send(result2);
-});
+// var sql = "UPDATE recipes SET ingredients = ('lemon, water, sugar, salt') WHERE id = 4";
+//     connection.query(sql, function (err, result2) {
+//     if (err) throw err;
+//     //res.send(result2);
+// });
 
 // var sql = "DROP TABLE ingredients";
 //     connection.query(sql, function (err, result2) {
