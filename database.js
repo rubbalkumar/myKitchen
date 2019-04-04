@@ -33,6 +33,12 @@ connection.connect(function (err) {
     // connection.query(sql, function (err, result2) {
     // if (err) throw err;
     // });
+
+    // Creating the pantry/shopping list
+    // var sql = "CREATE TABLE pantry(id int, ingredients VARCHAR(255))";
+    // connection.query(sql, function (err, result2) {
+    // if (err) throw err;
+    // });
     
 });
 
@@ -61,11 +67,11 @@ app.get('/', (req, res) => {
     //     res.send(result2);
     // });
 
-//     var sql = "select * from users";
-//     connection.query(sql, function (err, result2) {
-//     if (err) throw err;
-//     res.send(result2);
-// });
+    var sql = "select * from users";
+    connection.query(sql, function (err, result2) {
+    if (err) throw err;
+    res.send(result2);
+});
 
 // var sql = "ALTER TABLE ingredients RENAME TO requirements;";
 //     connection.query(sql, function (err, result2) {
