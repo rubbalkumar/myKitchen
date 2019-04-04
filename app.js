@@ -35,30 +35,40 @@ app.use(passport.session());
 // store user serialize data in browser cookie 
 passport.serializeUser((currUser, cb) => {
     // TODO: user = user row in the db, and currUser.id is the whatever id for the user
-    cb(null, currUser.sub);
+    console.log('here~~~~~~> ' + currUser.googleid);
+    cb(null, currUser.id);
 });
 
 // get user data from browser cookie 
 passport.deserializeUser((id, cb) => {
     var currUser = id; // user after check/create in the db
     // TODO: query on the db based on the id (user table id), store back to currUser var
-    console.log('id of the user from cookie: ' + id);
-    cb(null, currUser);
+    // console.log('id of the user from cookie: ' + id);
+    console.log('deserialize user: ' + id);
+    var sql2 = "SELECT * FROM users WHERE id = '" + id + "';";
+            connection.query(sql2, function (err, result3) {
+                if (err) throw err;
+                else {
+                    console.log(result3[0])
+                    cb(null, result3[0]);
+                }
+            });
 });
 
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.use(new GoogleStrategy({
-        clientID: config.google_client_id,
-        clientSecret: config.google_client_secret,
-        callbackURL: " /auth/google/redirect"
-    },
+    clientID: config.google_client_id,
+    clientSecret: config.google_client_secret,
+    callbackURL: " /auth/google/redirect"
+},
     function (accessToken, refreshToken, profile, cb) {
-        var currUser = profile._json; // user after check/create in the db
+        var currUser = profile._json; // user after check/create in the 
 
         // TODO: check the user table if any user with this id "profile._json.sub" exist,
         //  if yes, then just login the user
-        //  else, create a new user with the profile._json data. 
+        //  else, create a new user with the profile._json data.
+
         /**
         profile._json = { sub: '101216936986399344837',
         name: 'Wilbur Wildcat',
@@ -69,9 +79,40 @@ passport.use(new GoogleStrategy({
         gender: 'male',
         locale: 'en' }
          */
-        console.log(profile._json);
+        //console.log(profile._json.sub);
         // TODO: after user login/signup, call cb(null, currUser) user is the user profile
-        cb(null, currUser);
+
+        var sql = "SELECT * FROM users WHERE googleid = '" + profile._json.sub + "';";
+        connection.query(sql, function (err, result2) {
+            if (err) throw err;
+            else if (result2[0] == null) {
+                var sql1 = "INSERT INTO users (username, googleid, picture, bookmarked, contributed) VALUES ('" + profile._json.name + "', '" + profile._json.sub + "', '" + profile._json.picture + "', 0, 0);";
+                console.log(sql1);
+                connection.query(sql1, function (err, result7) {
+                    if (err) {
+                        console.log('error in sql user inFsert')
+                    } else {
+                        console.log(result7);
+                        console.log("here");
+                    }
+                });
+            }
+
+            var sql2 = "SELECT * FROM users WHERE googleid = '" + profile._json.sub + "';";
+            connection.query(sql2, function (err, result3) {
+                if (err) throw err;
+                else {
+                    console.log('curruser data from db: ---> '+result3[0].id);
+                    cb(null, result3[0]);
+                }
+            });
+
+
+        });
+
+
+
+        // cb(null, currUser);
     }
 ));
 
@@ -91,7 +132,7 @@ app.get('/', (req, res) => {
         });
     } else {
         res.render('index', {
-            user: null, 
+            user: null,
             recipe: ['sfs', 'sdfa']
         });
     }
