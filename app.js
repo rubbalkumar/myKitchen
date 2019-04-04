@@ -10,6 +10,7 @@ const app = express();
 
 app.set('view engine', 'ejs');
 app.use('/views', express.static('views'));
+app.use('/recipe/views', express.static('views'));
 
 var connection = mysql.createConnection({
     host: 'mykitchen.c3jx8fklyfbq.us-east-2.rds.amazonaws.com',
@@ -205,16 +206,19 @@ app.get('/shopping/remove/:ingredient', (req, res) => {
 
 
 
-app.get('/recipe/', (req, res) => {
+app.get('/recipe/:id', (req, res) => {
+    var id = req.params.id;  // recipe id
+    // TODO: query recipe table based on the id
+
     if (req.user) {
         res.render('recipe_details', {
             user: req.user,
-            recipe: ['sfs', 'sdfa']
+            recipe: []
         });
     } else {
         res.render('recipe_details', {
             user: null,
-            recipe: ['sfs', 'sdfa']
+            recipe: []
         });
     }
 });

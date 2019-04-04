@@ -11,9 +11,9 @@
 </head>
 <!-- 
 <% if(user) { %>
-    <h2><%= user %></h2>
+<h2><%= user %></h2>
 <% } else{%>
-    <h2>not auth</h2>
+<h2>not auth</h2>
 <% } %> 
 -->
 
@@ -22,26 +22,49 @@
     <div id="mySidenav2" class="sidenav2">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
         <% if(user) { %>
-            <a href="#"><%= user%></a>
-            <a href="#">right bar</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
+        <a href="#" style="text-decoration: underline;">Your Shopping List</a>
+
+        <div class="search_area">
+            <form action="/shopping/add">
+                <input id="addIgd" type="text" placeholder="add items" name="ingredient">
+            </form>
+        </div>
+        <% if(user.shoppinglist != null && user.shoppinglist.length > 0) { %>
+        <% var items = user.shoppinglist.split(', ')%>
+        <% for(var i = 0; i < items.length-1; i++){ %>
+        <div class="indItem"><%= items[i]%><a href="/shopping/remove/<%= items[i]%>"> X </a></div>
+        <% } %>
         <% } else{%>
-            <a href="/auth/google">login</a>
+        <div class="indItem"> Empty Shopping list</div>
+        <% } %>
+
+
+        <% } else{%>
+        <a href="/auth/google">login</a>
         <% } %>
     </div>
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <% if(user) { %>
-            <a href="#"><%= user%></a>
-            <a href="#">right bar</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
+        <a href="#" style="text-decoration: underline;">Your Pantry Items</a>
+
+        <div class="search_area">
+            <form action="/pantry/add">
+                <input id="addIgd" type="text" placeholder="add items" name="ingredient">
+            </form>
+        </div>
+        <% if(user.pantry != null && user.pantry.length > 0) { %>
+        <% var items = user.pantry.split(', ')%>
+        <% for(var i = 0; i < items.length-1; i++){ %>
+        <div class="indItem"><%= items[i]%><a href="/pantry/remove/<%= items[i]%>"> X </a></div>
+        <% } %>
         <% } else{%>
-            <a href="/auth/google">login</a>
+        <div class="indItem"> No Pantry items</div>
+        <% } %>
+
+        <% } else{%>
+        <a href="/auth/google">login</a>
         <% } %>
 
     </div>
@@ -70,13 +93,39 @@
                 <% } %>
             </div>
 
-
-            <div class="footer">
-                <a href="views/recommend.html" class="contribute">Create New Recipe</a>
-                <a href="/" class="contribute">Your Created Recipe</a>
-                <a href="/" class="contribute">Your Saved Recipes</a>
+            <div>
+                <form action="/search">
+                    <input id="searchIgd" type="text" placeholder="Search Ingredients" name="search">
+                </form>
             </div>
+
+            <% if(recipe.length > 0) { %>
+            <% for(var i = 0; i < recipe.length; i++){ %>
+            <a href="/recipe/<%= recipe[i].id%>" class="recipe_a">
+                <div class="recipe">
+                    <div class="recipe_title"><%= recipe[i].title %></div>
+                    <div class="recipe_ing">(<%= recipe[i].time %>)</div>
+                    <div class="recipe_ing">
+                        <%= recipe[i].ingredients %>
+                    </div>
+                    <div class="recipe_instruction">"<%= recipe[i].instructions.substring(0, 200) %> ..."</div>
+                </div>
+            </a>
+            <% } %>
+            <% } else{%>
+            <div style="text-align: center;"> No Recipe found :(</div>
+            <% } %>
+
+            <br>
+            <br>
         </div>
+
+        <div class="footer">
+            <a href="views/recommend.html" class="contribute">Create New Recipe</a>
+            <a href="/" class="contribute">Your Created Recipe</a>
+            <a href="/" class="contribute">Your Saved Recipes</a>
+        </div>
+    </div>
 
 </body>
 
