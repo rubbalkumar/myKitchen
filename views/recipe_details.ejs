@@ -93,24 +93,14 @@
                 <% } %>
             </div>
 
-
-            <% if(recipe.length > 0) { %>
-            <% for(var i = 0; i < recipe.length; i++){ %>
-            <a href="/recipe/<%= recipe[i].id%>" class="recipe_a">
-                <div class="recipe">
-                    <div class="recipe_title"><%= recipe[i].title %></div>
-                    <div class="recipe_ing">(<%= recipe[i].time %>)</div>
-                    <div class="recipe_ing">
-                        <%= recipe[i].ingredients %>
-                    </div>
-                    <div class="recipe_instruction">"<%= recipe[i].instructions.substring(0, 200) %> ..."</div>
-                </div>
-            </a>
-            <% } %>
-            <% } else{%>
-            <div style="text-align: center;"> No Recipe found :(</div>
-            <% } %>
-
+            <div style="text-align: center; font-size: 50px; border: black; border-style: solid; border-spacing: 0%; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+                <%= recipe_details.title%></div>
+            <div style="text-align: center; font-size: 20px; padding: 10px; font-weight: bold; font-family: 'Courier New', Courier, monospace;"> By:
+                <%= recipe_details.owner%></div>
+            <div style="text-align: center; font-size: 20px; font-style: italic; font-family: 'Courier New', Courier, monospace;">Time: <%= recipe_details.time%></div>
+            <img style="align-content: center; width: 30%; height: auto; padding: 5px;" src=<%= recipe_details.picture%> alt=""
+                srcset="">
+            <div style="text-align: center; padding: 5px; font-family: 'Courier New', Courier, monospace; font-weight: bold;"> <%= recipe_details.instructions%></div>
             <br>
             <br>
         </div>
