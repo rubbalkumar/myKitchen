@@ -81,7 +81,7 @@ app.get('/', (req, res) => {
 //     res.send(result2);
 // });
 
-    var sql = "select pantry from users where id = 2";
+    var sql = "select * from users";
     connection.query(sql, function (err, result2) {
     if (err) throw err;
     res.send(result2);

@@ -152,24 +152,23 @@ app.get('/pantry/remove/:ingredient', (req, res) => {
     }
 });
 
-// TODO: fix this method based on shopping
 app.get('/shopping/add', (req, res) => { 
     var item = req.query.ingredient;
     if (req.user) {
         var userID = req.user.id;
         var items;
-        var sql = "SELECT pantry FROM users WHERE id = " + userID + ";";
+        var sql = "SELECT shoppinglist FROM users WHERE id = " + userID + ";";
         connection.query(sql, function (err, result) {
             if (err) throw err;
-            var updatedPantry = result[0].pantry;
-            if (result[0].pantry == null) {
-                updatedPantry = item + ', ';
-            } else if (updatedPantry.includes(item)) {
-                updatedPantry.replace(item, item);
+            var updatedList = result[0].shoppinglist;
+            if (result[0].shoppinglist == null) {
+                updatedList = item + ', ';
+            } else if (updatedList.includes(item)) {
+                updatedList.replace(item, item);
             } else {
-                updatedPantry += item + ', ';
+                updatedList += item + ', ';
             }
-            var sql2 = "UPDATE users SET pantry = '" + updatedPantry + "' WHERE id = " + userID + ";";
+            var sql2 = "UPDATE users SET shoppinglist = '" + updatedList + "' WHERE id = " + userID + ";";
             connection.query(sql2, function (err, result2) {
                 if (err) throw err;
                 res.redirect('/');
@@ -180,20 +179,19 @@ app.get('/shopping/add', (req, res) => {
     }
 });
 
-// TODO: fix this method based on shopping
 app.get('/shopping/remove/:ingredient', (req, res) => {
     var item = req.params.ingredient;
     if (req.user) {
         var userID = req.user.id;
-        var sql = "SELECT pantry FROM users WHERE id = " + userID + ";";
+        var sql = "SELECT shoppinglist FROM users WHERE id = " + userID + ";";
         connection.query(sql, function (err, result) {
             if (err) throw err;
-            var updatedPantry = result[0].pantry;
-            if (updatedPantry.includes(item)) {
+            var updatedList = result[0].shoppinglist;
+            if (updatedList.includes(item)) {
                 var temp = item + ', ';
-                updatedPantry = updatedPantry.replace(temp, '');
+                updatedList = updatedList.replace(temp, '');
             }
-            var sql2 = "UPDATE users SET pantry = '" + updatedPantry + "' WHERE id = " + userID + ";";
+            var sql2 = "UPDATE users SET shoppinglist = '" + updatedList + "' WHERE id = " + userID + ";";
             connection.query(sql2, function (err, result2) {
                 if (err) throw err;
                 res.redirect('/');
