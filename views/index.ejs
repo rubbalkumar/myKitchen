@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="views/recipe.css">
     <script src="views/recipe.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script> -->
 
@@ -23,26 +24,26 @@
     <div id="mySidenav2" class="sidenav2">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
         <% if(user) { %>
-            <a href="#"><%= user%></a>
-            <a href="#">right bar</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
+        <a href="#"><%= user%></a>
+        <a href="#">right bar</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
         <% } else{%>
-            <a href="#">login</a>
+        <a href="#">login</a>
         <% } %>
     </div>
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <% if(user) { %>
-            <a href="#"><%= user%></a>
-            <a href="#">right bar</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
+        <a href="#"><%= user%></a>
+        <a href="#">right bar</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
         <% } else{%>
-            <a href="#">login</a>
+        <a href="#">login</a>
         <% } %>
 
     </div>
@@ -64,11 +65,22 @@
                     <div id="Login" class="username">Login with Google</div>
                 </a>
                 <% } %>
-
             </div>
 
+            <div class="search_area">
+                <form action="/search">
+                    <input id="searchIgd" type="text" placeholder="Search Ingredients" name="search">
+                </form>
+            </div>
 
             <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
+        </div>
+
+
+        <div class="footer">
+            <a href="views/recommend.html" class="contribute">Create New Recipe</a>
+            <a href="/" class="contribute">Your Created Recipe</a>
+            <a href="/" class="contribute">Your Saved Recipes</a>
         </div>
     </div>
 

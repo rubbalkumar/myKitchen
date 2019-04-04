@@ -1,17 +1,16 @@
-
 body {
   font-family: "Lato", sans-serif;
   background: #007bff;
-    background: linear-gradient(to right, #0062E6, #33AEFF);
-    background-image: url('image.jpeg');
-    background-attachment: fixed; 
+  background: linear-gradient(to right, #0062E6, #33AEFF);
+  background-image: url('image.jpeg');
+  background-attachment: fixed;
 }
 
-.heading{
-  color:#818181;
+.heading {
+  color: #818181;
 }
 
-.contribute{
+.contribute {
   height: 20px;
   margin: 5px;
   color: blue;
@@ -21,12 +20,26 @@ body {
 
 }
 
+.search_area {
+  padding: 20px;
+}
 
+#searchIgd {
+  height: 50px;
+  width: 90%;
+  font-size: 14pt;
+  text-align: center;
+  border-radius: 20px;
+  background-color: rgba(221, 214, 190, 0.863);
+}
 
-
-
-
-
+#submitSearch {
+  height: 50px;
+  font-size: 14pt;
+  text-align: center;
+  background-color: rgba(221, 214, 190, 0.863);
+  border-radius: 0 20px 20px 0;
+}
 
 .topnav {
   overflow: hidden;
@@ -53,19 +66,18 @@ body {
   color: white;
 }
 
-.topnav .search-container {
+.topnav {
   float: right;
 }
 
 .topnav input[type=text] {
-
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
   border: none;
 }
 
-.topnav .search-container button {
+.topnav button {
   float: right;
   padding: 6px 10px;
   margin-top: 8px;
@@ -76,15 +88,18 @@ body {
   cursor: pointer;
 }
 
-.topnav .search-container button:hover {
+.topnav button:hover {
   background: #ccc;
 }
 
 @media screen and (max-width: 600px) {
-  .topnav .search-container {
+  .topnav {
     float: none;
   }
-  .topnav a, .topnav input[type=text], .topnav .search-container button {
+
+  .topnav a,
+  .topnav input[type=text],
+  .topnav button {
     float: none;
     display: block;
     text-align: left;
@@ -92,16 +107,29 @@ body {
     margin: 0;
     padding: 14px;
   }
+
+  .search-container {
+    float: right;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+    background: #ccc;
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 77px;
+    border: none;
+    cursor: pointer;
+  }
+
   .topnav input[type=text] {
-    border: 1px solid #ccc;  
+    border: 1px solid #ccc;
   }
 }
-
-
-
-
-
-
 
 
 .footer {
@@ -115,44 +143,44 @@ body {
   height: 40px;
   margin: auto;
   border-radius: 20px 20px 0px 0px;
-  
+
   left: 0;
-  bottom: 0; 
+  bottom: 0;
   right: 0;
 }
 
-#allRecipes{
+#allRecipes {
   color: white;
   background: black;
   margin-top: 20px;
 }
 
-#content{
+#content {
   width: 50%
-  
 }
 
 img {
   border-radius: 50%;
 }
 
-#text{
+#text {
   text-align: center;
 }
-.username{
+
+.username {
   font-size: 30px;
-  
+
 }
 
-#pantryLst{
-  font-size:30px;
-  cursor:pointer;
+#pantryLst {
+  font-size: 30px;
+  cursor: pointer;
   float: left;
 }
 
-#shoppingLstNavBar{
-  font-size:30px;
-  cursor:pointer;
+#shoppingLstNavBar {
+  font-size: 30px;
+  cursor: pointer;
   float: right;
 }
 
@@ -231,8 +259,13 @@ img {
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
 }
 
 /* #main {

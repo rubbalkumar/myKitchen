@@ -97,6 +97,11 @@ app.get('/', (req, res) => {
     }
 });
 
+app.get('/search', (req, res)=>{
+    console.log(req.query.search);
+    res.send(req.query.search.split(','));
+});
+
 app.get('/auth', (req, res) => {
     if (req.user) {
         res.send('auth user');

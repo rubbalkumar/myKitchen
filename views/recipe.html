@@ -7,7 +7,7 @@
   <script src="./recipe.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  
+
 </head>
 
 
@@ -19,13 +19,13 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
     <h1 class="heading">Shopping List</h1>
     <div class="search-container">
-        <form action="/action_page.php">
-          <input type="text" placeholder="Things to buy" name="search">
-          <button type="submit">Add </button>
-        </form>
-      </div>
-      <div class="heading" id="resultlist">Results Div
-      </div>
+      <form action="/action_page.php">
+        <input type="text" placeholder="Things to buy" name="search">
+        <button type="submit">Add </button>
+      </form>
+    </div>
+    <div class="heading" id="resultlist">Results Div
+    </div>
   </div>
 
   </div>
@@ -34,11 +34,11 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <h1 class="heading">Pantry List</h1>
     <div class="search-container">
-        <form action="/action_page.php">
-          <input type="text" placeholder="Pantry Items" name="search">
-          <button type="submit">Add </button>
-        </form>
-      </div>
+      <form action="/action_page.php">
+        <input type="text" placeholder="Pantry Items" name="search">
+        <button type="submit">Add </button>
+      </form>
+    </div>
     <div class="heading" id="pantrylist">Results Div</div>
   </div>
 
@@ -47,52 +47,40 @@
     <span id="pantryLst" onclick="openNav()">&#9776; Pantry List</span>
     <span id="shoppingLstNavBar" onclick="openNav2()">&#9776; Shopping List</span>
     <div id="content" style="clear: both;margin: auto">
-      
+
       <div id="text">
         <h1>Foodee</h1>
         <img src="https://i.stack.imgur.com/22WR2.png" alt="Avatar" height="150" width="150">
-            
+
         <div id="Login">
-            
-            Login with Google
+
+          Login with Google
           </a>
         </div>
         <div class="search-container">
-            <form action="">
-              <input id="searchIgd" type="text" placeholder="Search Ingredients" name="search">
-              <button id="submit" type="submit"><i class="fa fa-search"></i></button>
-              <style>#searchIgd{
-                  height:50px;
-                  font-size:14pt;
-                  text-align: center;
+          <form action="">
+            <input id="searchIgd" type="text" placeholder="Search Ingredients" name="search">
+            <button id="submit" type="submit"><i class="fa fa-search"></i></button>
+            <div id="allRecipes">Results Div </div>
 
-              }
-              #submit{
-                height:50px;
-                  font-size:14pt;
-                  text-align: center;
+          </form>
+        </div>
 
-              }</style>
-              <div id="allRecipes">Results Div </div>
-              
-            </form>
-          </div>
-        
-       
+
       </div>
 
 
-    
-      
+
+
     </div>
   </div>
 
   <div class="footer">
 
-      <a href="recommend.html" class="contribute">Create New Recipe</a>
-      <a href="#" class="contribute">Your Created Recipe</a>
-      <a href="#" class="contribute">Your Saved Recipes</a>
-    
+    <a href="recommend.html" class="contribute">Create New Recipe</a>
+    <a href="#" class="contribute">Your Created Recipe</a>
+    <a href="#" class="contribute">Your Saved Recipes</a>
+
   </div>
 
 </body>
