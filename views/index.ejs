@@ -27,18 +27,22 @@
         <a href="#" style="text-decoration: underline;">Your Shopping List</a>
 
         <div class="search_area">
-            <form action="/pantry/add">
+            <form action="/shopping/add">
                 <input id="addIgd" type="text" placeholder="add items" name="ingredient">
             </form>
         </div>
-
-        <div class="indItem">ing items 1<a href="#"> X </a></div>
-        <div class="indItem">ing items 2<a href="#"> X </a></div>
-        <div class="indItem">ing items 3<a href="#"> X </a></div>
-        <div class="indItem">ing items 4<a href="#"> X </a></div>
-        <div class="indItem">ing items 5<a href="#"> X </a></div>
+        <% if(user.shoppinglist != null && user.shoppinglist.length > 0) { %>
+        <% var items = user.shoppinglist.split(', ')%>
+        <% for(var i = 0; i < items.length-1; i++){ %>
+        <div class="indItem"><%= items[i]%><a href="/shopping/remove/<%= items[i]%>"> X </a></div>
+        <% } %>
         <% } else{%>
-        <a href="#">login</a>
+        <div class="indItem"> Empty Shopping list</div>
+        <% } %>
+
+
+        <% } else{%>
+        <a href="/auth/google">login</a>
         <% } %>
     </div>
 
@@ -52,12 +56,17 @@
                 <input id="addIgd" type="text" placeholder="add items" name="ingredient">
             </form>
         </div>
+        <% if(user.pantry != null && user.pantry.length > 0) { %>
         <% var items = user.pantry.split(', ')%>
         <% for(var i = 0; i < items.length-1; i++){ %>
         <div class="indItem"><%= items[i]%><a href="/pantry/remove/<%= items[i]%>"> X </a></div>
         <% } %>
         <% } else{%>
-        <a href="#">login</a>
+        <div class="indItem"> No Pantry items</div>
+        <% } %>
+
+        <% } else{%>
+        <a href="/auth/google">login</a>
         <% } %>
 
     </div>
@@ -106,7 +115,7 @@
             </a>
             <% } %>
             <% } else{%>
-            <h2>nothing here</h2>
+            <div style="text-align: center;"> No Recipe found :(</div>
             <% } %>
 
 
