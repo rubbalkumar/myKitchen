@@ -52,12 +52,10 @@
                 <input id="addIgd" type="text" placeholder="add items" name="ingredient">
             </form>
         </div>
-
-        <div class="indItem">ing items 1<a href="#"> X </a></div>
-        <div class="indItem">ing items 2<a href="#"> X </a></div>
-        <div class="indItem">ing items 3<a href="#"> X </a></div>
-        <div class="indItem">ing items 4<a href="#"> X </a></div>
-        <div class="indItem">ing items 5<a href="#"> X </a></div>
+        <% var items = user.pantry.split(', ')%>
+        <% for(var i = 0; i < items.length-1; i++){ %>
+        <div class="indItem"><%= items[i]%><a href="/pantry/remove/<%= items[i]%>"> X </a></div>
+        <% } %>
         <% } else{%>
         <a href="#">login</a>
         <% } %>
@@ -102,7 +100,7 @@
                     </div>
 
                     <div class="recipe_ing">
-                            <%= recipe[0].ingredients%>
+                        <%= recipe[0].ingredients%>
                     </div>
                 </div>
             </a>
