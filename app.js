@@ -152,6 +152,60 @@ app.get('/pantry/remove/:ingredient', (req, res) => {
     }
 });
 
+// TODO: fix this method based on shopping
+app.get('/shopping/add', (req, res) => { 
+    var item = req.query.ingredient;
+    if (req.user) {
+        var userID = req.user.id;
+        var items;
+        var sql = "SELECT pantry FROM users WHERE id = " + userID + ";";
+        connection.query(sql, function (err, result) {
+            if (err) throw err;
+            var updatedPantry = result[0].pantry;
+            if (result[0].pantry == null) {
+                updatedPantry = item + ', ';
+            } else if (updatedPantry.includes(item)) {
+                updatedPantry.replace(item, item);
+            } else {
+                updatedPantry += item + ', ';
+            }
+            var sql2 = "UPDATE users SET pantry = '" + updatedPantry + "' WHERE id = " + userID + ";";
+            connection.query(sql2, function (err, result2) {
+                if (err) throw err;
+                res.redirect('/');
+            });
+        });
+    } else {
+        res.render('/');
+    }
+});
+
+// TODO: fix this method based on shopping
+app.get('/shopping/remove/:ingredient', (req, res) => {
+    var item = req.params.ingredient;
+    if (req.user) {
+        var userID = req.user.id;
+        var sql = "SELECT pantry FROM users WHERE id = " + userID + ";";
+        connection.query(sql, function (err, result) {
+            if (err) throw err;
+            var updatedPantry = result[0].pantry;
+            if (updatedPantry.includes(item)) {
+                var temp = item + ', ';
+                updatedPantry = updatedPantry.replace(temp, '');
+            }
+            var sql2 = "UPDATE users SET pantry = '" + updatedPantry + "' WHERE id = " + userID + ";";
+            connection.query(sql2, function (err, result2) {
+                if (err) throw err;
+                res.redirect('/');
+            });
+        });
+    } else {
+        res.render('/');
+    }
+});
+
+
+
 
 app.get('/recipe/', (req, res) => {
     if (req.user) {
